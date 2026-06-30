@@ -6,7 +6,7 @@ const methodOverride = require("method-override");
 // new code below this line
 const path = require("path");
 const app = express();
-const PORT = 3700;
+const PORT = process.env.PORT;
 const MISSION_END = new Date("2026-09-02");
 const session = require("express-session");
 // Mongoose connection
