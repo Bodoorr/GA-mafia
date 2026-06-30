@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1"
+      type="module"
+    ></script>
+
+    <title>GA Mafia</title>
+  </head>
+
+  <body>
+    <div class="bg-red-950 min-h-screen overflow-hidden">
+      <header class="absolute inset-x-0 top-0 z-50">
+        <nav
+          aria-label="Global"
+          class="relative flex items-center px-6 py-2 lg:px-8"
+        >
+          <a href="/" class="flex items-center">
+            <span class="sr-only">Your Missions</span>
+            <img src="/image.png" alt="" class="h-8 w-auto" />
+          </a>
+
+          <p
+            id="countdown"
+            class="absolute left-1/2 -translate-x-1/2 text-sm font-semibold text-white"
+          >
+            00:00:00
+          </p>
+        </nav>
+      </header>
+
+      <div class="mx-auto max-w-7xl py-5 px-6 sm:px-6 sm:py-1 lg:px-8">
+        <div
+          class="relative isolate overflow-hidden bg-red-950 pt-20 lg:flex lg:items-center lg:justify-between lg:gap-x-32"
+        >
+          <div
+            class="mx-auto max-w-3xl text-center lg:mx-0 lg:flex-1 lg:text-left"
+          >
+            <h1
+              class="text-6xl font-semibold tracking-tight text-balance text-white sm:text-7xl lg:text-8xl"
+            >
+              Welcome to GA Mafia Game
+            </h1>
+
+            <p
+              class="mt-8 text-lg leading-8 text-pretty text-gray-300 sm:text-xl"
+            >
+              where every player has a mission, every move matters, and no one
+              knows who the mafia is.
+            </p>
+          </div>
+
+          <div
+            class="mt-12 flex flex-row items-center justify-center gap-x-6 lg:mt-0 lg:flex-none lg:justify-end"
+          >
+            <a
+              href="/missions"
+              class="rounded-md bg-red-700 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-red-600 whitespace-nowrap"
+            >
+              Get started
+            </a>
+
+            <a
+              href="/instructions"
+              class="text-base font-semibold text-white hover:text-gray-200 whitespace-nowrap"
+            >
+              Instructions
+              <span aria-hidden="true"> → </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <footer
+        class="border-t border-gray-700 py-6 text-center text-sm text-gray-400"
+      >
+        Created by your favorite IA
+      </footer>
+    </div>
+    <script>
+      const endDate = new Date("<%= endDate.toISOString() %>");
+
+      const formatTime = (ms) => {
+        const totalSeconds = Math.floor(ms / 1000);
+
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        return (
+          String(days).padStart(2, "0") +
+          "d " +
+          String(hours).padStart(2, "0") +
+          "h " +
+          String(minutes).padStart(2, "0") +
+          "m " +
+          String(seconds).padStart(2, "0") +
+          "s"
+        );
+      };
+
+      const updateCountdown = () => {
+        const now = new Date();
+
+        const remaining = endDate - now;
+
+        document.getElementById("countdown").innerText =
+          remaining <= 0 ? "00d 00h 00m 00s" : formatTime(remaining);
+      };
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    </script>
+  </body>
+</html>

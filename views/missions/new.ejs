@@ -1,0 +1,36 @@
+<head>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body>
+  <a class="missions-index-link" href="/missions">
+    <div class="index=link-text">Back to missions</div></a
+  >
+  <h1>Create a new mission!</h1>
+
+  <form method="POST" action="/missions">
+    <label>Name:</label>
+    <input
+      type="text"
+      name="name"
+      placeholder="mission Name"
+      id="name"
+      required
+    />
+    <br /><br />
+
+    <label>Description:</label>
+    <textarea
+      name="description"
+      placeholder="Description"
+      id="description"
+      required
+    ></textarea>
+    <br />
+
+    <label>Is this mission completed?</label>
+    <input type="checkbox" name="isCompleted" id="isCompleted" value="yes" />
+    <br />
+
+    <button type="submit">Create mission</button>
+  </form>
+</body>
